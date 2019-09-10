@@ -37,7 +37,9 @@ describe("About Applying What We Have Learnt", function() {
       var productsICanEat = [];
 
       /* solve using filter() & all() / any() */
-      productsICanEat = products.filter(function(pizza) {return !pizza.containsNuts;}).filter(function(nonNutPizza) {return !nonNutPizza.ingredients.includes("mushrooms");});
+
+
+      productsICanEat = products.filter(function(pizza) {return !pizza.containsNuts;}).filter(function(remaining){return !_.any(remaining.ingredients, function(ingredient) {return ingredient === 'mushrooms';});});
 
       expect(productsICanEat.length).toBe(1);
   });
@@ -65,7 +67,7 @@ describe("About Applying What We Have Learnt", function() {
       {return a+b;} else {
         return a;
       }}, 0).value();
-    console.log(sum);
+
     expect(233168).toBe(sum);
   });
 
